@@ -5,7 +5,8 @@
 
 #section1 {
 	height: 38vh;
-	background-image: url('./Images/back.png');
+	background-image: url('./Images/background-backlight-blur-color-262713.jpg');
+	background-position: center center;
 	display: flex;
 	align-items: center;
 	justify-content: center;
