@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import Budget from './Components/totalBudget';
+import Transaction from './Components/addTransaction';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			total: 0,
+			income: 0,
+			expenses: 0,
+			incomeTransactions: [],
+			expenseTransactions: [],
+			posOrNeg: '+',
+			transactionDesc: '',
+			transactionValue: ''
+		};
+		this.changeHandler = this.changeHandler.bind(this);
+	}
+
+	changeHandler(e) {
+		this.setState({ [e.target.name]: e.target.value });
+	}
+
+	render() {
+		return (
+			<div id='root'>
+				<div id='section1'>
+					<Budget
+						total={this.state.total}
+						income={this.state.income}
+						expenses={this.state.expenses}
+					/>
+				</div>
+				<div id='section2'>
+					<Transaction
+						value={this.state.transactionValue}
+						description={this.state.transactionDesc}
+						changeHandler={e => this.changeHandler(e)}
+					/>
+				</div>
+			</div>
+		);
+	}
 }
-
-export default App;
