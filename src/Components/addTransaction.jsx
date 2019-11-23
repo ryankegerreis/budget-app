@@ -5,7 +5,7 @@ export default function addTransaction(props) {
 		<div id='transaction-root'>
 			{/* Add a transaction */}
 			<form>
-				<select>
+				<select onChange={props.changeHandler.bind(this)} name='posOrNeg' value={props.posOrNeg}>
 					<option value='+'>+</option>
 					<option value='-'>-</option>
 				</select>
@@ -15,19 +15,20 @@ export default function addTransaction(props) {
 						name='transactionDesc'
 						value={props.description}
 						placeholder='Description'
+						onChange={props.changeHandler.bind(this)}
 					/>
 				</label>
 
 				<label>
 					<input
 						name='transactionValue'
-						onChange={props.changeHandler}
+						onChange={props.changeHandler.bind(this)}
 						value={props.value}
 						placeholder='Amount'
 					/>
 				</label>
 
-				<button type='submit'>Submit</button>
+				<button onClick={props.submit} type='button'>Submit</button>
 			</form>
 		</div>
 	);

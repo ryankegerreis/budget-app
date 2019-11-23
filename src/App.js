@@ -17,10 +17,28 @@ export default class App extends Component {
 			transactionValue: ''
 		};
 		this.changeHandler = this.changeHandler.bind(this);
+		this.submitHandler = this.submitHandler.bind(this);
 	}
 
 	changeHandler(e) {
 		this.setState({ [e.target.name]: e.target.value });
+	}
+
+	submitHandler() {
+		console.log('Submitted!')
+		if (this.state.posOrNeg === '+') {
+			let newArr = this.state.incomeTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
+			this.setState({
+				...this.state,
+				incomeTransactions: newArr
+			})
+		} else {
+			let newArr = this.state.expenseTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
+			this.setState({
+				...this.state,
+				expenseTransactions: newArr
+			})
+		}
 	}
 
 	render() {
@@ -38,6 +56,8 @@ export default class App extends Component {
 						value={this.state.transactionValue}
 						description={this.state.transactionDesc}
 						changeHandler={e => this.changeHandler(e)}
+						posOrNeg={this.state.posOrNeg}
+						submit={this.submitHandler}
 					/>
 				</div>
 			</div>
