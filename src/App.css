@@ -16,6 +16,12 @@
 	height: 62vh;
 }
 
+#list-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
 /* Budget Component */
 #total-budget-root {
 	display: flex;
@@ -42,4 +48,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+
+/* List Transactions Component */
+.list{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 30vw;
+	background-color: aqua;
 }

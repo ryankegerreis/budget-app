@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Budget from './Components/totalBudget';
 import Transaction from './Components/addTransaction';
+import List from './Components/ListTransactions'
 
 export default class App extends Component {
 	constructor(props) {
@@ -59,6 +60,10 @@ export default class App extends Component {
 						posOrNeg={this.state.posOrNeg}
 						submit={this.submitHandler}
 					/>
+					<div id='list-container'>
+						<List name='Income' transactions={this.state.incomeTransactions} />
+						<List name='Expenses' transactions={this.state.expenseTransactions} />
+					</div>
 				</div>
 			</div>
 		);
