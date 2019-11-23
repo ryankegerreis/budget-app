@@ -54,8 +54,16 @@
 /* List Transactions Component */
 .list{
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	flex-direction: column;
+	/* justify-content: space-around; */
 	width: 30vw;
+	text-align: center;
+}
+
+/* Transaction Component */
+#each-transaction {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
 	background-color: aqua;
 }

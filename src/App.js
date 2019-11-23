@@ -15,7 +15,7 @@ export default class App extends Component {
 			expenseTransactions: [],
 			posOrNeg: '+',
 			transactionDesc: '',
-			transactionValue: ''
+			transactionValue: 0
 		};
 		this.changeHandler = this.changeHandler.bind(this);
 		this.submitHandler = this.submitHandler.bind(this);
@@ -26,18 +26,25 @@ export default class App extends Component {
 	}
 
 	submitHandler() {
-		console.log('Submitted!')
 		if (this.state.posOrNeg === '+') {
 			let newArr = this.state.incomeTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
 			this.setState({
 				...this.state,
-				incomeTransactions: newArr
+				incomeTransactions: newArr,
+				income: this.state.income + this.state.transactionValue,
+				total: this.state.total + this.state.transactionValue,
+				transactionDesc: '',
+				transactionValue: 0
 			})
 		} else {
 			let newArr = this.state.expenseTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
 			this.setState({
 				...this.state,
-				expenseTransactions: newArr
+				expenseTransactions: newArr,
+				expenses: this.state.income + this.state.transactionValue,
+				total: this.state.total - this.state.transactionValue,
+				transactionDesc: '',
+				transactionValue: 0
 			})
 		}
 	}
