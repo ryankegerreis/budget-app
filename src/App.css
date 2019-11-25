@@ -32,13 +32,27 @@
 
 #budget-income {
 	width: 100%;
-	background-color: aquamarine;
+	background-color: #28b9b5;
 	margin-bottom: 5px;
+	height: 40px;
 }
 
 #budget-expenses {
 	width: 100%;
-	background-color: red;
+	background-color: #ff5049;
+	margin-bottom: 10px;
+	height: 40px;
+}
+
+.budget-spacing {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.budget-counter {
+	color: white;
 }
 
 /* Transaction Component */
@@ -50,12 +64,10 @@
 	justify-content: center;
 }
 
-
 /* List Transactions Component */
-.list{
+.list {
 	display: flex;
 	flex-direction: column;
-	/* justify-content: space-around; */
 	width: 30vw;
 	text-align: center;
 }

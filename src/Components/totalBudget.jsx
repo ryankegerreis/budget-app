@@ -9,8 +9,14 @@ export default function totalBudget(props) {
 					{props.total >= 0 ? '+' : '-'} {props.total}
 				</h1>
 			</div>
-			<div id='budget-income'>{props.income}</div>
-			<div id='budget-expenses'>{props.expenses}</div>
+			<div className='budget-spacing' id='budget-income'>
+				<h4>Income</h4>
+				<h4 className='budget-counter'>+ {props.income}</h4>
+			</div>
+			<div className='budget-spacing' id='budget-expenses'>
+				<h4>Expenses</h4>
+				<h4 className='budget-counter'>- {props.expenses}</h4>
+			</div>
 		</div>
 	);
 }

@@ -2,7 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import Budget from './Components/totalBudget';
 import Transaction from './Components/addTransaction';
-import List from './Components/ListTransactions'
+import List from './Components/ListTransactions';
 
 export default class App extends Component {
 	constructor(props) {
@@ -15,7 +15,7 @@ export default class App extends Component {
 			expenseTransactions: [],
 			posOrNeg: '+',
 			transactionDesc: '',
-			transactionValue: 0
+			transactionValue: ''
 		};
 		this.changeHandler = this.changeHandler.bind(this);
 		this.submitHandler = this.submitHandler.bind(this);
@@ -27,25 +27,32 @@ export default class App extends Component {
 
 	submitHandler() {
 		if (this.state.posOrNeg === '+') {
-			let newArr = this.state.incomeTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
+			let newArr = this.state.incomeTransactions.concat({
+				description: this.state.transactionDesc,
+				value: this.state.transactionValue
+			});
 			this.setState({
 				...this.state,
 				incomeTransactions: newArr,
-				income: this.state.income + this.state.transactionValue,
-				total: this.state.total + this.state.transactionValue,
+				income: Number(this.state.income) + Number(this.state.transactionValue),
+				total: Number(this.state.total) + Number(this.state.transactionValue),
 				transactionDesc: '',
-				transactionValue: 0
-			})
+				transactionValue: ''
+			});
 		} else {
-			let newArr = this.state.expenseTransactions.concat({ description: this.state.transactionDesc, value: this.state.transactionValue });
+			let newArr = this.state.expenseTransactions.concat({
+				description: this.state.transactionDesc,
+				value: this.state.transactionValue
+			});
 			this.setState({
 				...this.state,
 				expenseTransactions: newArr,
-				expenses: this.state.income + this.state.transactionValue,
-				total: this.state.total - this.state.transactionValue,
+				expenses:
+					Number(this.state.expenses) + Number(this.state.transactionValue),
+				total: Number(this.state.total) - Number(this.state.transactionValue),
 				transactionDesc: '',
-				transactionValue: 0
-			})
+				transactionValue: ''
+			});
 		}
 	}
 
@@ -68,8 +75,16 @@ export default class App extends Component {
 						submit={this.submitHandler}
 					/>
 					<div id='list-container'>
-						<List name='Income' transactions={this.state.incomeTransactions} />
-						<List name='Expenses' transactions={this.state.expenseTransactions} />
+						<List
+							color={'#28b9b5'}
+							name='Income'
+							transactions={this.state.incomeTransactions}
+						/>
+						<List
+							color={'#ff5049'}
+							name='Expenses'
+							transactions={this.state.expenseTransactions}
+						/>
 					</div>
 				</div>
 			</div>
